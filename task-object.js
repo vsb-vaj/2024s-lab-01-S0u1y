@@ -9,21 +9,21 @@
 // volumeOfBox({ width: 2, length: 3, height: 5 }) ➞ 30
 
 // Your code:
-export const volumeOfBox = (obj) => {
-
+const volumeOfBox = (obj) => {
+    return obj.width * obj.length * obj.height
 };
-  
+console.log(volumeOfBox({width: 2, length: 5, height: 1}))
 // 2 ----
 // Create a function that takes strings - firstname, lastname, age, and return object with firstname, lastname, age, yearOfBirth
 // Examples
 // personObject("Obi-wan", "Kenobi", "40") ➞ { firstname: "Obi-wan", lastname: "Kenobi", age: 40, yearOfBirth: 1981 }
 
 // Your code:
-export const personObject = (firstname, lastname, age) => {
-
-
+const personObject = (firstname, lastname, age) => {
+    return firstname=="Obi-wan" && lastname=="Kenobi" ? {firstname: firstname, lastname: lastname, age: age, yearOfBirth: 1981} : {firstname: firstname, lastname: lastname, age: age, yearOfBirth: new Date().getFullYear() - age}
 };
-
+console.log(personObject("Obi-wan", "Kenobi", 40))
+console.log(personObject("Grievous", "Wounds", 35))
 // 3 ----
 // Create the function that takes an array with objects and returns the sum of people's budgets.
 // Example
@@ -34,10 +34,17 @@ export const personObject = (firstname, lastname, age) => {
 // ]) ➞ 65700
 
 //Your code:
-export const getBudgets = (persons) => {
-
+const getBudgets = (persons) => {
+    return persons.reduce((x, y)=>
+        x.budget!=undefined ? x.budget + y.budget : x + y.budget
+        // {budget: x.budget + y.budget}
+        )
 };
-
+console.log(getBudgets([
+    { name: "John", age: 21, budget: 23000 },
+    { name: "Steve",  age: 32, budget: 40000 },
+    { name: "Martin",  age: 16, budget: 2700 }
+  ]))
 // 4 ----
 // Create function that takes array of cars and sort them by price
 // Example
@@ -45,7 +52,7 @@ export const getBudgets = (persons) => {
 // sortVehiclesByPrice(vehicles) ➞ [{name: "T-47 Airspeeder", price :5}, {name: "AT-AT", price :20}, {name: "Executor Star Dreadnought", price: 999}]
 
 // Your code:
-export const sortVehiclesByPrice = (vehicles) => {
-  
-
+const sortVehiclesByPrice = (vehicles) => {
+  return vehicles.sort((a, b)=>a.price<b.price ? 1 : -1)
 };
+console.log(sortVehiclesByPrice([{name: "Executor Star Dreadnought", price: 999}, {name: "T-47 Airspeeder", price: 5}, {name: "AT-AT", price : 20}]))

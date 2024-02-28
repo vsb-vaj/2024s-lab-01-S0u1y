@@ -7,10 +7,10 @@
 // "javascript-is-the-best"
 
 // Your code:
-export const parametrize = (input) => {
-
+const parametrize = (input) => {
+    return input.replaceAll(" ", "-")
 };
-
+console.log(parametrize("Javascript is the best"))
 // 2 =================================
 // Write function that takes object and return sentence
 // Example:
@@ -19,8 +19,9 @@ export const parametrize = (input) => {
 
 // Your code:
 export const giveSentenceForPerson = (obj) => {
-
+    console.log(`Hello ${obj.name} from ${obj.location}! It is nice to meet you! You look awesome for your ${obj.age}, young ${obj.position}!`)
 };
+giveSentenceForPerson({name: "Obi-wan", position: "Jedi", age: 40, location: "Starwars universe"})
 
 // 3 =================================
 // Write function that takes string and replace all `a`, `e`, `i`, `o` with *
@@ -29,5 +30,6 @@ export const giveSentenceForPerson = (obj) => {
 
 // Your code:
 export const replace = (input) => {
-
+    return input.replaceAll(/[aeio]/gi, "*")
 };
+console.log(replace("Hello Javascript"))
